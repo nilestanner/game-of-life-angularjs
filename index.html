@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<header>
+  <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+  <link rel="stylesheet" href="main.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <script src="./app/app.controller.js"></script>
+</header>
+
+<body ng-app="gameOfLife"  ng-controller="myCtrl as ctrl">
+
+  <div id="grid" class="grid">
+    <div class="cell" ng-repeat="cell in ctrl.gridData track by $index" age="{{cell}}" ng-click="ctrl.clickCell(cell,$index)">
+
+    </div>
+  </div>
+  <div class="controls">
+
+    <button type="button" ng-click="ctrl.placeRandom()">place random</button>
+    <button type="button" ng-click="ctrl.step()" ng-disabled="ctrl.running">step</button>
+    <button type="button" ng-click="ctrl.run()" ng-disabled="ctrl.running">run</button>
+    <button type="button" ng-click="ctrl.stop()" ng-disabled="!ctrl.running">stop</button>
+    <button type="button" ng-click="ctrl.reset()" ng-disabled="ctrl.running">reset</button>
+    <br>
+    <br>
+    <div>fps: {{ctrl.fps}}</div>
+    <div>average fps: {{ctrl.avgFps}}</div>
+    <div>steps: {{ctrl.steps}}</div>
+    <br>
+    <br>
+    <p>
+      Click to add cells
+    </p>
+    <br>
+    <p>
+      Built with <b>AngularJS 1.6.4</b>
+    </p>
+
+  </div>
+
+</body>
+
+</html>
